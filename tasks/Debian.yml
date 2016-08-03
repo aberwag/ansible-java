@@ -1,0 +1,11 @@
+- name: Add JRE ppa
+  apt_repository:
+    repo: ppa:webupd8team/java
+    state: present
+
+- name: Ensure Java JRE {{ java_version }} is installed
+  apt:
+    name: "oracle-java-{{ java_version | default('7') }}-installer"
+    state: present
+    update_cache: yes
+    force: yes

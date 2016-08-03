@@ -1,0 +1,6 @@
+- name: Check if java version is defined
+  fail: msg="[ERROR] - Required variable 'java_version' missing."
+  when: java_version is not defined
+
+- name: Install for {{ ansible_os_family }} system
+  include: {{ ansible_os_family }}.yml
